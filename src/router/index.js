@@ -1,29 +1,39 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import routes from '../providers/principal';
+
+
+let logged = {
+  usr: null,
+  token: null
+}
 
 Vue.use(VueRouter)
-
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
-})
+});
+
+
+router.beforeEach((to, from, next) => {
+
+  logged.usr = localStorage.getItem("user");
+  logged.token = localStorage.getItem("x-token");
+
+  if ((to.meta.requiresAuth || to.name == undefined) && (logged.usr == null || logged.token == null)) {
+    next({
+      name: "login"
+    });
+  } else if (to.name == 'login' && logged.usr != null) {
+    next({
+      name: "inicio",
+      replace: true
+    });
+  } else {
+    next();
+  }
+});
 
 export default router
