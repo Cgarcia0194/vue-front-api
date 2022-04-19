@@ -7,7 +7,7 @@ npm install
 
 ### Poner el puerto en el que se ejecuta el servidor backend de NodeJS en el siguiente archivo del proyecto
 ```
-providers->conn-back.js
+src->providers->conn-back.js
 ```
 
 ### Ejecutar app
