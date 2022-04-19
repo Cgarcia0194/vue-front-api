@@ -18,9 +18,5 @@ export default {
     MenuComponent,
     FooterComponent,
   },
-
-  data: () => ({
-
-  }),
 };
 </script>

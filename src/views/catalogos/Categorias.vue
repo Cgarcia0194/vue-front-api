@@ -85,7 +85,7 @@
               :disabled="validar"
               @click="modificarCategoria"
             >
-              Modificar
+              Actualizar
             </v-btn>
             <v-btn
               v-show="btnAgregar"

@@ -38,7 +38,6 @@ import { BACK_API } from "../providers/conn-back";
 
 export default {
   name: "LoginPage",
-
   data() {
     return {
       options: {
@@ -47,7 +46,6 @@ export default {
           "Content-Type": "application/json",
         },
         body: null,
-        // body: JSON.stringify(data)
       },
       route: `${BACK_API}/api/auth/login`,
       showPss: false,
@@ -91,8 +89,6 @@ export default {
 
               setTimeout(() => {
                 this.$router.go();
-
-                // this.$router.push("inicio");
               }, 2000);
 
               if (!inicio) {
@@ -102,7 +98,6 @@ export default {
                   icon: "error",
                 });
               }
-
               break;
             }
             default: {

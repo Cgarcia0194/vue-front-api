@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container v-if="usr != null">
     <v-app-bar app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
@@ -12,9 +12,12 @@
     <v-navigation-drawer v-model="drawer" app>
       <v-sheet color="grey lighten-4" class="pa-4">
         <v-avatar class="mb-4" color="red darken-1" size="45">
-          <span class="white--text text-h5">{{ abrevsUser }}</span></v-avatar
-        >
-        <div>Bienvenido {{ usr.nombre_completo }}</div>
+          <span class="white--text text-h5">{{ abrevsUser }}</span>
+        </v-avatar>
+        <div>
+          Bienvenido
+          {{ usr.nombre_completo }}
+        </div>
       </v-sheet>
 
       <v-divider></v-divider>
@@ -85,8 +88,14 @@ export default {
     },
   },
   created() {
-    this.usr = JSON.parse(localStorage.getItem("user"));
-    this.abrevsUser = this.usr.nombre_completo.substr(0, 2).toUpperCase();
+    const data = JSON.parse(localStorage.getItem("user"));
+
+    if (data !== null) {
+      this.usr = data;
+      this.abrevsUser = this.usr.nombre_completo.substr(0, 2).toUpperCase();
+    } else {
+      return false;
+    }
   },
 };
 </script>

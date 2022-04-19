@@ -114,7 +114,7 @@
               :disabled="!validar"
               @click="modificarProducto"
             >
-              Modificar
+              Actualizar
             </v-btn>
             <v-btn
               v-show="btnAgregar"
@@ -525,7 +525,6 @@ export default {
       }
     },
     cargarInfo(item) {
-      console.log(item);
       this.fields = Object.assign({}, item);
       this.dialog = true;
       this.btnAgregar = false;
