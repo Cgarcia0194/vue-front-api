@@ -1,18 +1,18 @@
 # prueba-app
 
-## Project setup
+## Instalar módulos requeridos en el proyecto
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Poner el puerto en el que se ejecuta el servidor backend de NodeJS en el siguiente archivo del proyecto
 ```
-npm run serve
+src->providers->conn-back.js
 ```
 
-### Compiles and minifies for production
+### Ejecutar app
 ```
-npm run build
+npm run serve
 ```
 
 ### Customize configuration
